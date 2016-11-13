@@ -4,90 +4,6 @@
 
 <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
 <link href="style" rel="stylesheet" />
-<style>
-	body{font-family:'Lato', sans-serif;}
-	.page_topper{
-		padding:16px;
-	}
-	.page_topper hr{
-		border:1px solid #ececec;	
-		width:72px;
-		margin:0px;
-	}
-	.book_review_list{
-		margin:0px auto;
-		width:100%;
-		position:relative;
-		display: flex;
-		flex-flow: row wrap;
-		justify-content:left;
-	}
-	.book_review_small{
-		flex:1;
-		flex-grow:0;
-		flex-basis:20%;
-		flex-order:1;
-	}
-	.book_cover{
-		background-color:#F3F3F4;
-		height:300px;
-		border-radius:3px;
-		display: flex;
-		justify-content:center;
-		align-items:center;
-		margin:16px;
-	}
-	.book_cover img{
-		box-shadow: 0px 2px 4px rgba(0,0,0, .2), 0px 8px 8px rgba(0,0,0,.12) ;
-		max-height:268px;
-		max-width:85%;
-
-	}
-	.book_details{padding:8px 32px 24px;}
-	.book_details h4{
-		color:#EA8561;
-		font-size:18px;
-		font-weight:400;
-		line-height:24px;
-		padding:0;
-		margin:0 0 8px;
-	}
-	.book_details cite{
-		font-style:normal;
-		font-weight:300;
-		color:#74757D;
-		font-size:14px;
-	}
-
-
-
-/* Large Devices, Wide Screens */
-    @media only screen and (max-width : 1200px) {
-		.book_review_small{flex-basis:33%;}
-    }
-
-    /* Medium Devices, Desktops */
-    @media only screen and (max-width : 992px) {
-		.book_review_small{flex-basis:33%;}
-    }
-
-    /* Small Devices, Tablets */
-    @media only screen and (max-width : 768px) {
-		.book_review_small{flex-basis:50%;}
-    }
-
-    /* Extra Small Devices, Phones */ 
-    @media only screen and (max-width : 480px) {
-		.book_review_small{flex-basis:100%;}
-    }
-
-    /* Custom, iPhone Retina */ 
-    @media only screen and (max-width : 320px) {
-		.book_review_small{flex-basis:50%;}  
-    }
-
-
-</style>
 
 </head>
 <body>
@@ -150,15 +66,6 @@
 		</div>
 
 	</div>
-
-
-
-
-
-
-<!-- ************************************
-SCRIPTS
-************************************  -->
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
