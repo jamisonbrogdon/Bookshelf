@@ -13,59 +13,7 @@
 		<hr>
 	</div>
 
-	<div class="book_review_list">
-
-		<div class="book_review_small">
-			<div class="book_cover">
-				<img src="http://knowledge.wharton.upenn.edu/wp-content/uploads/2016/06/Sprint-cover-196x300.jpg" />
-			</div>
-			<div class="book_details">
-				<h4>Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days</h4>
-				<cite>By Jake Knapp</cite>
-			</div>
-		</div>
-
-		<div class="book_review_small">
-			<div class="book_cover">
-				<img src="https://mitpress.mit.edu/sites/default/files/9780262134729_0.jpg" />
-			</div>
-			<div class="book_details">
-				<h4>The Laws of Simplicity: Design, Technology, Business, Life</h4>
-				<cite>By John Maeda</cite>
-			</div>
-		</div>
-
-		<div class="book_review_small">
-			<div class="book_cover">
-				<img src="http://rosenfeldmedia.com/wp-content/uploads/2014/12/users-journey-front.jpg" />
-			</div>
-			<div class="book_details">
-				<h4>The User’s Journey: Storymapping Products That People Love</h4>
-				<cite>By Donna Lichaw</cite>
-			</div>
-		</div>
-
-		<div class="book_review_small">
-			<div class="book_cover">
-				<img src="http://images.gr-assets.com/books/1367778804l/17081913.jpg" />
-			</div>
-			<div class="book_details">
-				<h4>Evil By Design: Interaction Design to Lead Us into Temptation</h4>
-				<cite>By Chris Nodder</cite>
-			</div>
-		</div>
-
-		<div class="book_review_small">
-			<div class="book_cover">
-				<img src="http://images.gr-assets.com/books/1356713735l/13017981.jpg" />
-			</div>
-			<div class="book_details">
-				<h4>The Shape of Design</h4>
-				<cite>By Frank Chimero</cite>
-			</div>
-		</div>
-
-	</div>
+	<div class="book_review_list" id="book_list"></div>
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
@@ -79,7 +27,35 @@
     messagingSenderId: "1090915945350"
   };
   firebase.initializeApp(config);
+
+  var ref = firebase.database().ref('books');
+
+
+	var bookList = document.getElementById('book_list');	
+
+  ref.on('value', (snapshot) => {
+  	var books = snapshot.val();
+
+  	bookList.innerHTML='';
+  
+	books.forEach(function(book){
+		if(book.status!=='hidden'){
+			if(book.status==='new'){
+				var bookSmall = "<div class='book_review_small'><div class='book_cover'><div class='newTag'>NEW</div><img src='images/" + book.bookCoverSmall + "'/></div><div class='book_details'><h4>" + book. bookTitle + "</h4><cite>" + book.bookAuthor + "</cite></div></div>" 
+				bookList.insertAdjacentHTML('beforeEnd', bookSmall)
+			}
+			else{
+				var bookSmall = "<div class='book_review_small'><div class='book_cover'><img src='images/" + book.bookCoverSmall + "'/></div><div class='book_details'><h4>" + book. bookTitle + "</h4><cite>" + book.bookAuthor + "</cite></div></div>" 
+				bookList.insertAdjacentHTML('beforeEnd', bookSmall)
+			}
+			
+		}
+
+	})
+  });
 </script>
+
+
 
 
 
